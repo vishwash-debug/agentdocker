@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage ( 'CODE' ) {
             steps {
-                git url:"https://github.com/Huzefa211/agentdocker.git" , branch: "main"                 
+                git url:"https://github.com/vishwash-debug/agentdocker.git" , branch: "main"                 
             }
         }
         stage ( 'build' ) {
