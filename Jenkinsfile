@@ -4,6 +4,7 @@ pipeline {
         IMAGE_NAME = "simpleapp1112223"
         IMAGE_TAG = "${BUILD_NUMBER}"
         DOCKER_IMAGE = "${IMAGE_NAME}:${IMAGE_TAG}"
+    }
     stages {
         stage ( 'CODE' ) {
             steps {
@@ -20,7 +21,7 @@ pipeline {
                steps {
                    sh "docker stop c1 || true"
                    sh "docker rm c1 || true"
-                   sh "docker run -d --name c1 -p 80:80 simpleapp:1 sleep infinity"
+                   sh "docker run -d --name c1 -p 80:80 ${DOCKER_IMAGE} sleep infinity"
                    
                }
     }
