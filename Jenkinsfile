@@ -1,7 +1,7 @@
 pipeline {
     agent { label "${LABEL_NAME}" }
     environment {
-        IMAGE_NAME = "simpleappy0000"
+        IMAGE_NAME = "simpleappy0"
         IMAGE_TAG = "${BUILD_NUMBER}"
         DOCKER_IMAGE = "${IMAGE_NAME}:${IMAGE_TAG}"
     }
@@ -26,4 +26,13 @@ pipeline {
                }
     }
 }
+    post {
+        emailext {
+            body: '''this mail is regarding the failed build
+for the reference check console output of ''',
+    subject: 'Build FAILED $(BUILD_NUMBER)', 
+    to: 'vishwashaws@gmail.com'
+                 }
+    }
 }
+
