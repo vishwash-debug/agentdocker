@@ -21,7 +21,7 @@ pipeline {
                steps {
                    sh "docker stop c1 || true"
                    sh "docker rm c1 || true"
-                   sh "docker run -d --name c1 -p 80:80 ${DOCKER_IMAGE} sleep infinity"
+                   sh "docker run -d --name c1 -p 80:80 --restart always ${DOCKER_IMAGE} sleep infinity"
                    
                }
     }
